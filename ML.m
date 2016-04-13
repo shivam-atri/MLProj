@@ -1,4 +1,4 @@
-data = (readtable('mldata.csv'));
+data = (readtable('MLProj/mldata.csv'));
 trainingsize = floor(height(data) * 0.80);
 testsize = 682 - trainingsize;
 trainingdata = (datasample(data,trainingsize,'Replace',false));
@@ -65,7 +65,7 @@ Treeaccuracy = (testsize - err)/testsize;
 
 % AdaBoost Tree Ensemble
 NumTrainCycles = 5;
-t = templateTree('Surrogate','off')
+t = templateTree('Surrogate','off');
 Ensemble = fitensemble(trainbasicfeatures,trainbestlabels,'AdaBoostM2',NumTrainCycles,t);
 labels = predict(Ensemble,testbasicfeatures);
 err = 0;
